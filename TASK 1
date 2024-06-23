@@ -9,10 +9,12 @@ Step 2. Order for Leafpad Installation
 Step 3. To open Leafpad
         $ cd 
         $ leafpad filename.c &
+![PROGRAM](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/7cdc08c8-5e9f-4b92-a68d-8a3651c9ca35)
 
 Step 4. Order for Gathering and Examining the Results
         $ gcc filename.c
         $./a.out
+![OUTPUT](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/3e8c9962-a4c8-44a9-a396-a4f84235fe9d)
 
 Step 5. Command for RISC-V Compiler Code Compilation
         $ riscv64-unknown-elf-gcc-O1 -mabi=lp64 -march=rv64i -o filename.o filename.c 
