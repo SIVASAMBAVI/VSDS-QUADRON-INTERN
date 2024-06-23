@@ -50,6 +50,9 @@ The **VSDSquadron Mini** is a compact development board featuring a **RISC-V mic
 
 This board is a versatile tool for exploring RISC-V architecture and developing embedded applications.
 
+           TASK 1 
+
+
 
 
 
