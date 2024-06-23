@@ -1,0 +1,29 @@
+Installing the required programmes for this internship, such as Ubuntu on VMBox, Visual C++, and writing an example of C code along with evaluating RISC assembly code for the sample C code, are the tasks at hand.
+
+Step 1. Setting up Ubuntu within VMBox
+Once the tools have been installed, launch Ubuntu's terminal and enter the command.
+
+Step 2. Order for Leafpad Installation
+        $ sudo apt install leafpad
+
+Step 3. To open Leafpad
+        $ cd 
+        $ leafpad filename.c &
+
+Step 4. Order for Gathering and Examining the Results
+        $ gcc filename.c
+        $./a.out
+
+Step 5. Command for RISC-V Compiler Code Compilation
+        $ riscv64-unknown-elf-gcc-O1 -mabi=lp64 -march=rv64i -o filename.o filename.c 
+        $ ls filename.o -ltr
+
+Step 6. Press to Display the Assembly Code
+        $ riscv64-unknown-elf-objdump-d filename.o ------>Provides a large amount of code
+        $ riscv64-unknown-elf-objdump -d filename.o | less ------->Provides Reduced Code /main and to see the code's primary function
+
+Step 7. Order to Examine Assembly Code
+         $ riscv64-unknown-elf-gcc-Ofast -mabi=lp64 -march=rv64i -o filename.o filename.c 
+         $ riscv64-unknown-elf-objdump -d filename.o | less /main 
+
+
