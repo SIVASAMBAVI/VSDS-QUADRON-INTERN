@@ -19,6 +19,7 @@ Step 4. Order for Gathering and Examining the Results
 Step 5. Command for RISC-V Compiler Code Compilation
         $ riscv64-unknown-elf-gcc-O1 -mabi=lp64 -march=rv64i -o filename.o filename.c 
         $ ls filename.o -ltr
+![1](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/948a3682-e196-4ba5-9e72-dc4593979ccd)
 
 Step 6. Press to Display the Assembly Code
         $ riscv64-unknown-elf-objdump-d filename.o ------>Provides a large amount of code
