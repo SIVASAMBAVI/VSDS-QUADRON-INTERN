@@ -59,46 +59,56 @@ Step 1. Setting up Ubuntu within VMBox
 Once the tools have been installed, launch Ubuntu's terminal and enter the command.
 
 Step 2. Order for Leafpad Installation
+
         $ sudo apt install leafpad
         
 Step 3. To open Leafpad
+
         $ cd 
+        
         $ leafpad filename.c &
         
         
-![PROGRAM](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/7cdc08c8-5e9f-4b92-a68d-8a3651c9ca35) 
+![program1](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/d121f5f5-7c83-4b94-b68b-dc117915ab46)
+
 
 
 Step 4. Order for Gathering and Examining the Results
+
         $ gcc filename.c
+        
         $./a.out
 
         
-![OUTPUT](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/3e8c9962-a4c8-44a9-a396-a4f84235fe9d) 
+![output](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/40210207-6361-4a40-99b6-48b68800da13)
 
 
 
 Step 5. Command for RISC-V Compiler Code Compilation
+
         $ riscv64-unknown-elf-gcc-O1 -mabi=lp64 -march=rv64i -o filename.o filename.c 
+        
         $ ls filename.o -ltr
 
-        
-![1](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/948a3682-e196-4ba5-9e72-dc4593979ccd)
 
 
 Step 6. Press to Display the Assembly Code
+
         $ riscv64-unknown-elf-objdump-d filename.o ------>Provides a large amount of code
+        
         $ riscv64-unknown-elf-objdump -d filename.o | less ------->Provides Reduced Code /main and to see the code's primary function
 
-        
-![2](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/1c574c97-64af-477e-8a06-e944a45afca0) 
+![ass](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/e12e50f5-8a91-4872-a445-c662c7f7e320)   
 
 
 
 Step 7. Order to Examine Assembly Code
+
         $ riscv64-unknown-elf-gcc-Ofast -mabi=lp64 -march=rv64i -o filename.o filename.c 
+        
         $ riscv64-unknown-elf-objdump -d filename.o | less /main 
 
+![main](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/1116f104-0879-468d-920c-7b66cd35af8a)
 
 
 
