@@ -125,6 +125,8 @@ A clock divider is a circuit that divides the frequency of a clock signal. It's 
 #### CODE:-
 
 
+![clock_divider program and output n=10](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/9e9028b5-a6cc-47b5-955e-5ed2aa52bc45)
+
 
 The provided code simulates this process using a simple loop:
 
@@ -147,11 +149,11 @@ n, the dividedClock toggles, and the counter resets to 0.
 #### Timing Diagram
 
 
-Here is a basic timing diagram illustrating the input clock and the divided clock output for a clock divider with 
-𝑁
-=
-3
-N=3.
+![TIMING DIAGRAM](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/000cb2fa-70d9-4d8c-b1b3-8c3ebdb8054b)
+
+
+Here is a basic timing diagram illustrating the input clock and the divided clock output for a clock divider with 𝑁=3.
+
 
 
 
@@ -159,7 +161,10 @@ N=3.
 #### BLOCK DIAGRAM:-
 
 
-#### OUTPUT:-
+![Simple Basic Flowchart Diagram](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/1670f327-f5e0-4abe-96b5-2f0670bdda08)
+
+
+
 
 
 
