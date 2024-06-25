@@ -1,6 +1,6 @@
-VSDS QUADRON MINI INTERNSHIP
+# VSDS QUARDRON MINI INTERNSHIP
 ****************************
-A detailed description of the kit is given below.
+_A detailed description of the kit is given below._
             
             
 ![risc-v](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/9ea472b3-b49a-42be-bad2-fc65c15ca07d)
@@ -51,18 +51,21 @@ The **VSDSquadron Mini** is a compact development board featuring a **RISC-V mic
 
 This board is a versatile tool for exploring RISC-V architecture and developing embedded applications.
 
-**************************************************************************************************************************************************************************************************************************
+*********************************************************************************************************************************************************************************************************************
 
-Installing the required programmes for this internship, such as Ubuntu on VMBox, Visual C++, and writing an example of C code along with evaluating RISC assembly code for the sample C code, are the tasks at hand.
 
-Step 1. Setting up Ubuntu within VMBox
+## TASK 1
+
+#### _Installing the required programmes for this internship, such as Ubuntu on VMBox, Visual C++, and writing an example of C code along with evaluating RISC assembly code for the sample C code, are the tasks at hand._
+
+#### Step 1. Setting up Ubuntu within VMBox
 Once the tools have been installed, launch Ubuntu's terminal and enter the command.
 
-Step 2. Order for Leafpad Installation
+#### Step 2. Order for Leafpad Installation
 
         $ sudo apt install leafpad
         
-Step 3. To open Leafpad
+#### Step 3. To open Leafpad
 
         $ cd 
         
@@ -73,7 +76,7 @@ Step 3. To open Leafpad
 
 
 
-Step 4. Order for Gathering and Examining the Results
+#### Step 4. Order for Gathering and Examining the Results
 
         $ gcc filename.c
         
@@ -84,7 +87,7 @@ Step 4. Order for Gathering and Examining the Results
 
 
 
-Step 5. Command for RISC-V Compiler Code Compilation
+#### Step 5. Command for RISC-V Compiler Code Compilation
 
         $ riscv64-unknown-elf-gcc-O1 -mabi=lp64 -march=rv64i -o filename.o filename.c 
         
@@ -92,7 +95,7 @@ Step 5. Command for RISC-V Compiler Code Compilation
 
 
 
-Step 6. Press to Display the Assembly Code
+#### Step 6. Press to Display the Assembly Code
 
         $ riscv64-unknown-elf-objdump-d filename.o ------>Provides a large amount of code
         
@@ -102,13 +105,67 @@ Step 6. Press to Display the Assembly Code
 
 
 
-Step 7. Order to Examine Assembly Code
+#### Step 7. Order to Examine Assembly Code
 
         $ riscv64-unknown-elf-gcc-Ofast -mabi=lp64 -march=rv64i -o filename.o filename.c 
         
         $ riscv64-unknown-elf-objdump -d filename.o | less /main 
 
 ![main](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/1116f104-0879-468d-920c-7b66cd35af8a)
+
+*********************************************************************************************************************************************************************************************************************
+
+## TASK 2
+
+#### _Write a simple C program for your project selected and compile with RISC-V GCC_
+
+A clock divider is a circuit that divides the frequency of a clock signal. It's used in digital systems to create slower clocks from a high-speed clock source. For example, a clock divider can take a 100 MHz clock and produce a 50 MHz clock. Clock dividers are fundamental in digital electronics and are used in timing, synchronization, and power management.
+
+
+#### CODE:-
+
+
+
+The provided code simulates this process using a simple loop:
+
+Initialization:
+
+clock toggles to simulate the input clock.
+dividedClock represents the output clock signal.
+counter counts the input clock cycles.
+Clock Simulation:
+
+The clock variable toggles between 0 and 1 to simulate the input clock signal.
+Clock Division:
+
+On each positive edge of the clock (clock == 1), the counter increments.
+When the counter equals the specified value 
+𝑛
+n, the dividedClock toggles, and the counter resets to 0.
+
+
+#### Timing Diagram
+
+
+Here is a basic timing diagram illustrating the input clock and the divided clock output for a clock divider with 
+𝑁
+=
+3
+N=3.
+
+
+
+
+#### BLOCK DIAGRAM:-
+
+
+#### OUTPUT:-
+
+
+
+
+
+
 
 
 
