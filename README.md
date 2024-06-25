@@ -1,5 +1,10 @@
 # VSDS QUARDRON MINI INTERNSHIP
+
+*  Overview of VSDSquadron Mini Kit
+*  TASK 1
+*  TASK 2
 ****************************
+
 _A detailed description of the kit is given below._
             
             
