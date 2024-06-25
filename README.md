@@ -145,6 +145,7 @@ When the counter equals the specified value
 𝑛
 n, the dividedClock toggles, and the counter resets to 0.
 
+*******************************************************************
 
 #### Timing Diagram
 
@@ -152,16 +153,33 @@ n, the dividedClock toggles, and the counter resets to 0.
 ![TIMING DIAGRAM](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/000cb2fa-70d9-4d8c-b1b3-8c3ebdb8054b)
 
 
-Here is a basic timing diagram illustrating the input clock and the divided clock output for a clock divider with 𝑁=3.
+Here is a basic timing diagram illustrating the input clock and the divided clock output for a clock divider with 𝑁=10.
 
 
-
+**************************************************************************************************************************************
 
 
 #### BLOCK DIAGRAM:-
 
 
 ![Simple Basic Flowchart Diagram](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/d4afc750-d521-47d0-b7ae-0cc936849e24)
+
+************************************************************************************************************************************************************
+
+#### ASSEMBLY CODES:
+
+![assembly1](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/aa0be868-b957-4860-97a3-2bd27f99b4c6)
+
+
+![assembly2](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/9cbe7e50-e651-4472-8253-26bb74a60331)
+
+
+![assembly3](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/92f2296a-e7ce-48f9-94ce-853f8aad0bc7)
+
+
+![assembly4](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/9b9c6e5e-cf25-4cbb-b014-199600443f66)
+
+
 
 
 
