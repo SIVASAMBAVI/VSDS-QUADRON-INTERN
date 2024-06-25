@@ -161,7 +161,7 @@ Here is a basic timing diagram illustrating the input clock and the divided cloc
 #### BLOCK DIAGRAM:-
 
 
-![Simple Basic Flowchart Diagram](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/1670f327-f5e0-4abe-96b5-2f0670bdda08)
+![Simple Basic Flowchart Diagram](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/d4afc750-d521-47d0-b7ae-0cc936849e24)
 
 
 
