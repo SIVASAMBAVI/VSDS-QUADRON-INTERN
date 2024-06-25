@@ -185,6 +185,21 @@ Here is a basic timing diagram illustrating the input clock and the divided cloc
 ![assembly4](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/9b9c6e5e-cf25-4cbb-b014-199600443f66)
 
 
+*******************************************************************************************************************************************************************8
+
+## TASK 3
+
+####  _To compile the C code under RISCV and equalize the output of GCC and RISCV (O1==O2)_
+
+Compiling the C code both in GCC and in RISCV proves that the code can work on Kit and on chip.
+
+C code Compilation under RISCV is given below:-
+
+
+
+
+
+
 
 
 
