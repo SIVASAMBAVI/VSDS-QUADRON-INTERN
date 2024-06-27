@@ -186,30 +186,36 @@ Here is a basic timing diagram illustrating the input clock and the divided cloc
 ![assembly4](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/9b9c6e5e-cf25-4cbb-b014-199600443f66)
 
 
-*******************************************************************************************************************************************************************8
+*******************************************************************************************************************************************************************
 
 ## TASK 3
 
 ####  _To compile the C code under RISCV and equalize the output of GCC and RISCV (O1==O2)_
 
 Compiling the C code both in GCC and in RISCV proves that the code can work on Kit and on chip.
+With the use of an AI tool that generates the clock divided output, the C code for the project clock divider is retrieved efficiently, ensuring accurate implementation, reducing development time, and minimizing human errors, which enhances the overall reliability and performance of the clock divider.
 
-C code Compilation under RISCV is given below:-
+1. C code Compilation under GCC (i.e) O1 is given below:-
 
 
 ![gcc output O1](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/1bbf5bf5-62fe-46ac-bb09-4fcdf905e48a)
 
 
 
+2.  C code Compilation under RISCV (i.e) O2 is given below:-
+   
+
 ![riscv output O2](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/8e10a5f4-68c8-4010-9651-14c1297f61ef)
 
 
 
+3. Instruction codes:-
 
 ![assembly](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/89f02d27-acbe-4842-9e4b-0d19d6d1628e)
 
 
 
+4. Assembly codes:-
 
 ![ass1](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/efc394d0-5a68-40c5-9cdd-c6603d0af537)
 
