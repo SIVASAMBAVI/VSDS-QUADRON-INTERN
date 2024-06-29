@@ -220,6 +220,159 @@ With the use of an AI tool that generates the clock divided output, the C code f
 ![ass1](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/efc394d0-5a68-40c5-9cdd-c6603d0af537)
 
 
+********************************************************************************************************************************************************************************
+
+## TASK 4
+
+
+_"Identify various RISC-V instruction type (R, I, S, B, U, J) and exact 32-bit instruction code in the instruction type format for below RISC-V instructions_
+
+ADD r6, r2, r1
+SUB r7, r1, r2
+AND r8, r1, r3
+OR r9, r2, r5
+XOR r10, r1, r4
+SLT r11, r2, r4
+ADDI r12, r4, 5
+SW r3, r1, 2
+SRL r16, r14, r2
+BNE r0, r1, 20
+BEQ r0, r0, 15
+LW r13, r1, 2
+SLL r15, r1, r2
+
+_Upload the 32-bit pattern on Github"_
+
+
+ #### 1 . R-Type (Register) Instructions
+
+#### Format: Uses three registers for the operation: two source registers and one destination register.
+
+#### Fields:
+
+             opcode: Specifies the type of operation.
+             rd: Destination register.
+             funct3: Function code for additional operation specification.
+             rs1: First source register.
+             rs2: Second source register.
+             funct7: Extended function code for further operation specification.
+
+#### Common Instructions:
+
+            add rd, rs1, rs2 - Integer addition.
+            sub rd, rs1, rs2 - Integer subtraction.
+            and rd, rs1, rs2 - Bitwise AND.
+            or rd, rs1, rs2 - Bitwise OR.
+            sll rd, rs1, rs2 - Shift left logical.
+            sra rd, rs1, rs2 - Shift right arithmetic.
+
+
+#### 2. I-Type (Immediate) Instructions
+
+#### Format: Uses a source register and an immediate value.
+
+#### Fields:
+
+            opcode: Specifies the type of operation.
+            rd: Destination register.
+            funct3: Function code for additional operation specification.
+            rs1: Source register.
+            imm[11:0]: 12-bit immediate value.
+            
+#### Common Instructions:
+
+            addi rd, rs1, imm - Integer addition with immediate.
+            andi rd, rs1, imm - Bitwise AND with immediate.
+            ori rd, rs1, imm - Bitwise OR with immediate.
+            lw rd, offset(rs1) - Load word from memory.
+
+
+#### 3. S-Type (Store) Instructions
+
+#### Format: Uses two source registers and an immediate value to store data.
+
+#### Fields:
+
+            opcode: Specifies the type of store operation.
+            imm[11:5]: High 7 bits of immediate.
+            funct3: Function code for additional operation specification.
+            rs1: Base address register.
+            rs2: Source register containing the data to store.
+            imm[4:0]: Low 5 bits of immediate.
+            
+#### Common Instructions:
+
+            sw rs2, offset(rs1) - Store word to memory.
+            sb rs2, offset(rs1) - Store byte to memory.
+
+
+#### 4. B-Type (Branch) Instructions
+
+#### Format: Uses two source registers and an immediate value for conditional branching.
+
+#### Fields:
+
+            opcode: Specifies the type of branch operation.
+            imm[12|10:5]: High bits of immediate.
+            funct3: Function code for branch type.
+            rs1: First source register.
+            rs2: Second source register.
+            imm[4:1|11]: Low bits of immediate.
+            
+#### Common Instructions:
+
+            beq rs1, rs2, offset - Branch if equal.
+            bne rs1, rs2, offset - Branch if not equal.
+            blt rs1, rs2, offset - Branch if less than.
+            bge rs1, rs2, offset - Branch if greater or equal.
+
+
+#### 5. U-Type (Upper Immediate) Instructions
+
+#### Format: Used for instructions that operate with a 20-bit immediate.
+
+#### Fields:
+
+            opcode: Specifies the type of operation.
+            rd: Destination register.
+            imm[31:12]: 20-bit immediate value.
+            
+#### Common Instructions:
+
+            lui rd, imm - Load upper immediate.
+            auipc rd, imm - Add upper immediate to PC.
+
+#### 6. J-Type (Jump) Instructions
+
+#### Format: Used for jump instructions with a 20-bit immediate value.
+
+#### Fields:
+
+            opcode: Specifies the type of operation.
+            rd: Destination register.
+            imm[20|10:1|11|19:12]: 20-bit immediate value split into various segments.
+            
+#### Common Instructions:
+
+            jal rd, imm - Jump and link.
+            jalr rd, rs1, imm - Jump and link register (I-type format).
+
+
+#### Overview of RISC-V Instruction Types
+
+R-Type (Register): Used for arithmetic and logical operations.
+I-Type (Immediate): Used for arithmetic operations with immediate values, loads, and some control instructions.
+S-Type (Store): Used for storing data from registers to memory.
+B-Type (Branch): Used for conditional branches.
+U-Type (Upper immediate): Used for constructing large constants.
+J-Type (Jump): Used for jump instructions with immediate addresses.
+
+Each instruction format has a specific structure defined by bit fields, which include the opcode, function fields, register addresses, and immediate values.
+
+
+
+
+
 
 
 
