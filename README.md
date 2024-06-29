@@ -1,9 +1,11 @@
 # VSDS QUARDRON MINI INTERNSHIP
 
 *  Overview of VSDSquadron Mini Kit
-*  TASK 1
-*  TASK 2
-*  TASK 3
+*  TASK 1 - Installing the required programmes for this internship, such as Ubuntu on VMBox, Visual C++, and writing an example of C code along with evaluating RISC assembly code for the sample C code, are the tasks at hand.
+*  TASK 2 - Write a simple C program for your project selected and compile with RISC-V GCC.
+*  TASK 3 - To compile the C code under RISCV and equalize the output of GCC and RISCV (O1==O2).
+*  TASK 4 - Identify various RISC-V instruction type (R, I, S, B, U, J) and exact 32-bit instruction code in the instruction type format for below RISC-V instructions.
+  
 ****************************
 
 _A detailed description of the kit is given below._
@@ -368,6 +370,8 @@ U-Type (Upper immediate): Used for constructing large constants.
 J-Type (Jump): Used for jump instructions with immediate addresses.
 
 
+![ins](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/ad2b61d3-c2a6-4d53-b983-84d441f867a3)
+
 
 Each instruction format has a specific structure defined by bit fields, which include the opcode, function fields, register addresses, and immediate values.
 
@@ -470,7 +474,7 @@ Here’s a detailed explanation of the RISC-V instructions along with their corr
 
 - *Encoding*:
 
-               - opcode = 0110011 (0x33)
+              - opcode = 0110011 (0x33)
               - rd = r10 (0b01010)
               - funct3 = 100
               - rs1 = r1 (0b00001)
@@ -491,7 +495,7 @@ Here’s a detailed explanation of the RISC-V instructions along with their corr
 
 - *Encoding*:
 
-               - opcode = 0110011 (0x33)
+              - opcode = 0110011 (0x33)
               - rd = r11 (0b01011)
               - funct3 = 010
               - rs1 = r2 (0b00010)
@@ -532,7 +536,7 @@ Here’s a detailed explanation of the RISC-V instructions along with their corr
 
 - *Encoding*:
 
-               - opcode = 0100011 (0x23)
+              - opcode = 0100011 (0x23)
               - imm[11:5] = 0 (upper part of 2 is 0)
               - rs2 = r3 (0b00011)
               - rs1 = r1 (0b00001)
@@ -553,7 +557,7 @@ Here’s a detailed explanation of the RISC-V instructions along with their corr
 
 - *Encoding*:
 
-               - opcode = 0110011 (0x33)
+              - opcode = 0110011 (0x33)
               - rd = r16 (0b10000)
               - funct3 = 101
               - rs1 = r14 (0b01110)
@@ -574,7 +578,7 @@ Here’s a detailed explanation of the RISC-V instructions along with their corr
 
 - *Encoding*:
 
-               - opcode = 1100011 (0x63)
+              - opcode = 1100011 (0x63)
               - imm = 20 (0b0000000001010)
               - rs1 = r0 (0b00000)
               - rs2 = r1 (0b00001)
