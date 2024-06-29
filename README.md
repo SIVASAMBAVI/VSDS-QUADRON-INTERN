@@ -367,7 +367,240 @@ B-Type (Branch): Used for conditional branches.
 U-Type (Upper immediate): Used for constructing large constants.
 J-Type (Jump): Used for jump instructions with immediate addresses.
 
+
+
 Each instruction format has a specific structure defined by bit fields, which include the opcode, function fields, register addresses, and immediate values.
+
+Here’s a detailed explanation of the RISC-V instructions along with their corresponding 32-bit machine codes for the specified instructions, including their exact encoding in their respective formats (R, I, S, B, U, J).
+
+
+## RISC-V Instruction Formats and 32-bit Machine Codes
+
+#### 1. *ADD r6, r2, r1*
+
+- *Instruction*: ADD
+
+- *Type*: R-Type
+
+- *Format*: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
+
+- *Encoding*:
+
+              - opcode = 0110011 (0x33)
+              - rd = r6 (0b00110)
+              - funct3 = 000
+              - rs1 = r2 (0b00010)
+              - rs2 = r1 (0b00001)
+              - funct7 = 0000000
+    
+#### - *32-bit Code*: 0000000 00001 00010 000 00110 0110011
+ 
+- *Hex*: 0x0020A033
+
+#### 2. *SUB r7, r1, r2*
+
+- *Instruction*: SUB
+
+- *Type*: R-Type
+
+- *Format*: Same as above.
+
+- *Encoding*:
+
+              - opcode = 0110011 (0x33)
+              - rd = r7 (0b00111)
+              - funct3 = 000
+              - rs1 = r1 (0b00001)
+              - rs2 = r2 (0b00010)
+              - funct7 = 0100000
+
+#### - *32-bit Code*: 0100000 00010 00001 000 00111 0110011
+
+- *Hex*: 0x40208033
+
+#### 3. *AND r8, r1, r3*
+
+- *Instruction*: AND
+
+- *Type*: R-Type
+
+- *Format*: Same as above.
+
+- *Encoding*:
+
+              - opcode = 0110011 (0x33)
+              - rd = r8 (0b01000)
+              - funct3 = 111
+              - rs1 = r1 (0b00001)
+              - rs2 = r3 (0b00011)
+              - funct7 = 0000000
+
+#### - *32-bit Code*: 0000000 00011 00001 111 01000 0110011
+
+- *Hex*: 0x0030C033
+
+#### 4. *OR r9, r2, r5*
+
+- *Instruction*: OR
+
+- *Type*: R-Type
+
+- *Format*: Same as above.
+
+- *Encoding*:
+
+              - opcode = 0110011 (0x33)
+              - rd = r9 (0b01001)
+              - funct3 = 110
+              - rs1 = r2 (0b00010)
+              - rs2 = r5 (0b00101)
+              - funct7 = 0000000
+
+#### - *32-bit Code*: 0000000 00101 00010 110 01001 0110011
+
+- *Hex*: 0x0052C033
+
+#### 5. *XOR r10, r1, r4*
+
+- *Instruction*: XOR
+
+- *Type*: R-Type
+
+- *Format*: Same as above.
+
+- *Encoding*:
+
+               - opcode = 0110011 (0x33)
+              - rd = r10 (0b01010)
+              - funct3 = 100
+              - rs1 = r1 (0b00001)
+              - rs2 = r4 (0b00100)
+              - funct7 = 0000000
+
+#### - *32-bit Code*: 0000000 00100 00001 100 01010 0110011
+
+- *Hex*: 0x0040A033
+
+#### 6. *SLT r11, r2, r4*
+
+- *Instruction*: SLT (Set Less Than)
+
+- *Type*: R-Type
+
+- *Format*: Same as above.
+
+- *Encoding*:
+
+               - opcode = 0110011 (0x33)
+              - rd = r11 (0b01011)
+              - funct3 = 010
+              - rs1 = r2 (0b00010)
+              - rs2 = r4 (0b00100)
+              - funct7 = 0000000
+
+#### - *32-bit Code*: 0000000 00100 00010 010 01011 0110011
+
+- *Hex*: 0x00415033
+
+#### 7. *ADDI r12, r4, 5*
+
+- *Instruction*: ADDI (Add Immediate)
+
+- *Type*: I-Type
+
+- *Format*: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | imm[31:20]
+
+- *Encoding*:
+
+              - opcode = 0010011 (0x13)
+              - rd = r12 (0b01100)
+              - funct3 = 000
+              - rs1 = r4 (0b00100)
+              - imm = 5 (0b000000000101)
+
+#### - *32-bit Code*: 000000000101 00100 000 01100 0010011
+
+- *Hex*: 0x00520113
+
+#### 8. *SW r3, r1, 2*
+
+- *Instruction*: SW (Store Word)
+
+- *Type*: S-Type
+
+- *Format*: opcode[6:0] | imm[11:7] | rs2[24:20] | rs1[19:15] | funct3[14:12] | imm[4:0]
+
+- *Encoding*:
+
+               - opcode = 0100011 (0x23)
+              - imm[11:5] = 0 (upper part of 2 is 0)
+              - rs2 = r3 (0b00011)
+              - rs1 = r1 (0b00001)
+              - funct3 = 010
+              - imm[4:0] = 2 (0b00010)
+
+#### - *32-bit Code*: 0000000 00011 00001 010 00010 0100011
+
+- *Hex*: 0x00312223
+
+#### 9. *SRL r16, r14, r2*
+
+- *Instruction*: SRL (Shift Right Logical)
+
+- *Type*: R-Type
+
+- *Format*: Same as above.
+
+- *Encoding*:
+
+               - opcode = 0110011 (0x33)
+              - rd = r16 (0b10000)
+              - funct3 = 101
+              - rs1 = r14 (0b01110)
+              - rs2 = r2 (0b00010)
+              - funct7 = 0000000
+
+#### - *32-bit Code*: 0000000 00010 01110 101 10000 0110011
+
+- *Hex*: 0x00273333
+
+#### 10. *BNE r0, r1, 20*
+
+- *Instruction*: BNE (Branch Not Equal)
+
+- *Type*: B-Type
+
+- *Format*: opcode[6:0] | imm[11] | imm[4:1] | funct3[14:12] | rs1[19:15] | rs2[24:20] | imm[10:5] | imm[12]
+
+- *Encoding*:
+
+               - opcode = 1100011 (0x63)
+              - imm = 20 (0b0000000001010)
+              - rs1 = r0 (0b00000)
+              - rs2 = r1 (0b00001)
+              - funct3 = 001
+
+#### - *32-bit Code*: 0000000 00101 00001 001 00000 1100011
+
+- *Hex*: 0x01408063
+
+#### 11. *BEQ r0, r0, 15*
+
+- *Instruction*: BEQ (Branch Equal)
+
+- *Type*: B-Type
+
+- *Format*: Same as above.
+
+- *Encoding*:
+
+              - opcode = 1100011 (0x63)
+              - imm = 15 (0b0000000000111)
+              - rs1 = r0 (0b00000)
+              - rs2 = r0 (0b00000)
+              - funct3 = 000
+
+#### - *32-bit Code*: `0000000 000
 
 
 
