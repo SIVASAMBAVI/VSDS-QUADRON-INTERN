@@ -363,10 +363,15 @@ _Upload the 32-bit pattern on Github"_
 #### Overview of RISC-V Instruction Types
 
 R-Type (Register): Used for arithmetic and logical operations.
+
 I-Type (Immediate): Used for arithmetic operations with immediate values, loads, and some control instructions.
+
 S-Type (Store): Used for storing data from registers to memory.
+
 B-Type (Branch): Used for conditional branches.
+
 U-Type (Upper immediate): Used for constructing large constants.
+
 J-Type (Jump): Used for jump instructions with immediate addresses.
 
 
