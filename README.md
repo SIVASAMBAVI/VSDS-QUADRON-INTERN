@@ -714,13 +714,13 @@ View the Waveform:
         $ gtkwave simulation.vcd
 
 
+![gtkwave](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/01de2441-a515-4614-8e33-61125f4b46d5)
+
 ![open gtkwave](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/7be5f084-2489-4433-ae0e-37ac54257aac)
 
 ![gtkwave input and output](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/d8acfaeb-7bb9-453c-8f18-032d9bcdfcbf)
 
 ![gtk](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/f067f367-77bb-488f-9554-77b30b3a4f7c)
-
-![gtkwave](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/01de2441-a515-4614-8e33-61125f4b46d5)
 
  
  
