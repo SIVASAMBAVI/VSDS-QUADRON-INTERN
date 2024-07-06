@@ -5,6 +5,7 @@
 *  TASK 2 - Write a simple C program for your project selected and compile with RISC-V GCC.
 *  TASK 3 - To compile the C code under RISCV and equalize the output of GCC and RISCV (O1==O2).
 *  TASK 4 - Identify various RISC-V instruction type (R, I, S, B, U, J) and exact 32-bit instruction code in the instruction type format for below RISC-V instructions.
+*  TASK 5 - Use this RISC-V Core Verilog netlist and testbench for functional simulation experiment. Upload waveform snapshots for the commands on your GitHub. Reference GitHub repo is here.
   
 ****************************
 
@@ -639,7 +640,9 @@ _Use this RISC-V Core Verilog netlist and testbench for functional simulation ex
 
 2. Set Up Simulation Tools (GTKWave)
 
-3. Run the Functional Simulation
+3.  Edit the Testbench File:
+
+4. Run the Functional Simulation
 
 
 ## process:-
@@ -651,6 +654,8 @@ First, clone the repository that contains the Verilog netlist and testbench:
           $ git clone https://github.com/vinayrayapati/rv32i.git my_riscv_project
           $ cd my_riscv_project
 
+![clone](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/f39b7d74-04a0-44fe-8b01-b314c8deadcb)
+
 
 2. Set Up Simulation Tools (iverilog and GTKWave)
 
@@ -660,13 +665,29 @@ Install Icarus Verilog and GTKWave for Verilog simulation and waveform viewing.
           $ sudo apt update
           $ sudo apt install iverilog gtkwave
 
-3. Run the Functional Simulation
+![update](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/ce67583d-9fba-4f76-a346-729cd7495750)
+
+![install](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/90fffb63-cd38-49cf-8aa6-1abe9692eacf)
+
+
+3. Edit the Testbench File:
+
+Open the testbench file in a text editor:
+
+          $ nano iiitb_rv32i_tb.v
+
+  ![nanoedit](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/6ca510af-3aa1-49e0-9be7-3a2d0d5c0e00)
+  
+
+4. Run the Functional Simulation
 
 Ensure your testbench is configured to dump waveforms into a _.vcd file._ Here's a basic example of how your testbench might be configured:
 
 module testbench;
   
-  // Signals and instantiation of the design
+_Signals and instantiation of the design_
+
+EXAMPLE:-
   
   initial begin
     
@@ -685,10 +706,21 @@ Compile and Simulate:
         $ iverilog -o rv32i_simulation iiitb_rv32i.v iiitb_rv32i_tb.v
         $ vvp rv32i_simulation
 
+
+![vvp command](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/e3839e3f-fced-400f-8438-25be9e5d2163)
+
 View the Waveform:
 
         $ gtkwave simulation.vcd
 
+
+![open gtkwave](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/7be5f084-2489-4433-ae0e-37ac54257aac)
+
+![gtkwave input and output](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/d8acfaeb-7bb9-453c-8f18-032d9bcdfcbf)
+
+![gtk](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/f067f367-77bb-488f-9554-77b30b3a4f7c)
+
+![gtkwave](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/01de2441-a515-4614-8e33-61125f4b46d5)
 
  
  
