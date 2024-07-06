@@ -645,9 +645,10 @@ _Use this RISC-V Core Verilog netlist and testbench for functional simulation ex
 4. Run the Functional Simulation
 
 
-## process:-
+## Process:-
 
-1. Clone the Reference Repository
+
+#### 1. Clone the Reference Repository
 
 First, clone the repository that contains the Verilog netlist and testbench:
 
@@ -660,7 +661,7 @@ First, clone the repository that contains the Verilog netlist and testbench:
 ![clone](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/f39b7d74-04a0-44fe-8b01-b314c8deadcb)
 
 
-2. Set Up Simulation Tools (iverilog and GTKWave)
+#### 2. Set Up Simulation Tools (iverilog and GTKWave)
 
 Install Icarus Verilog and GTKWave for Verilog simulation and waveform viewing.
 
@@ -674,34 +675,35 @@ Install Icarus Verilog and GTKWave for Verilog simulation and waveform viewing.
 ![install](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/90fffb63-cd38-49cf-8aa6-1abe9692eacf)
 
 
-3. Edit the Testbench File:
+#### 3. Edit the Testbench File:
 
 Open the testbench file in a text editor:
 
           $ nano iiitb_rv32i_tb.v
 
-  After providing the above command press "ctrl+x" to release and check for that your testbench is in same format provided below:-
+After providing the above command press "ctrl+x" to release and check for that your testbench is in same format provided below:-
 
-  EXAMPLE:-
+#### EXAMPLE:-
   
-  initial begin
+    initial begin
     
-  $dumpfile("simulation.vcd"); // Name of the VCD file
+      $dumpfile("simulation.vcd"); // Name of the VCD file
    
-  $dumpvars(0, testbench); // Dump all signals of the testbench module
+      $dumpvars(0, testbench); // Dump all signals of the testbench module
  
-  end
+      end
   
-  // Testbench code...
+      // Testbench code...
 
-endmodule
+    endmodule
 
   ![nanoedit](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/6ca510af-3aa1-49e0-9be7-3a2d0d5c0e00)
   
 
 Ensure your testbench is configured to dump waveforms into a _.vcd file._ Here's a basic example of how your testbench might be configured:
 
-4. Run the Functional Simulation
+
+#### 4. Run the Functional Simulation
   
 _Signals and instantiation of the design_
 
