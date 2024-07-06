@@ -624,6 +624,77 @@ Here’s a detailed explanation of the RISC-V instructions along with their corr
 #### - *32-bit Code*: `0000000 000
 
 
+************************************************************************************************************************************************************************************************************
+
+## TASK 5
+
+_Use this RISC-V Core Verilog netlist and testbench for functional simulation experiment. Upload waveform snapshots for the commands on your GitHub. Reference GitHub repo is here._
+
+
+ ### ✒️Note With reference to these github repo's  and using AI tool the below has been developed :- https://github.com/maazm007/vsdsquadron-mini-internship  // https://github.com/vinayrayapati/rv32i/
+
+ ## Overview
+
+1. Clone the Reference Repository
+
+2. Set Up Simulation Tools (GTKWave)
+
+3. Run the Functional Simulation
+
+
+## process:-
+
+1. Clone the Reference Repository
+
+First, clone the repository that contains the Verilog netlist and testbench:
+
+          $ git clone https://github.com/vinayrayapati/rv32i.git my_riscv_project
+          $ cd my_riscv_project
+
+
+2. Set Up Simulation Tools (iverilog and GTKWave)
+
+Install Icarus Verilog and GTKWave for Verilog simulation and waveform viewing.
+
+
+          $ sudo apt update
+          $ sudo apt install iverilog gtkwave
+
+3. Run the Functional Simulation
+
+Ensure your testbench is configured to dump waveforms into a _.vcd file._ Here's a basic example of how your testbench might be configured:
+
+module testbench;
+  
+  // Signals and instantiation of the design
+  
+  initial begin
+    
+  $dumpfile("simulation.vcd"); // Name of the VCD file
+   
+  $dumpvars(0, testbench); // Dump all signals of the testbench module
+ 
+  end
+  
+  // Testbench code...
+
+endmodule
+
+Compile and Simulate:
+
+        $ iverilog -o rv32i_simulation iiitb_rv32i.v iiitb_rv32i_tb.v
+        $ vvp rv32i_simulation
+
+View the Waveform:
+
+        $ gtkwave simulation.vcd
+
+
+ 
+ 
+ 
+
+
 
 
 
