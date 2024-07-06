@@ -652,7 +652,10 @@ _Use this RISC-V Core Verilog netlist and testbench for functional simulation ex
 First, clone the repository that contains the Verilog netlist and testbench:
 
           $ git clone https://github.com/vinayrayapati/rv32i.git my_riscv_project
+          
           $ cd my_riscv_project
+
+  You can provide your name in the place of my_riscv_project!!
 
 ![clone](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/f39b7d74-04a0-44fe-8b01-b314c8deadcb)
 
@@ -663,6 +666,7 @@ Install Icarus Verilog and GTKWave for Verilog simulation and waveform viewing.
 
 
           $ sudo apt update
+          
           $ sudo apt install iverilog gtkwave
 
 ![update](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/ce67583d-9fba-4f76-a346-729cd7495750)
@@ -676,18 +680,9 @@ Open the testbench file in a text editor:
 
           $ nano iiitb_rv32i_tb.v
 
-  ![nanoedit](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/6ca510af-3aa1-49e0-9be7-3a2d0d5c0e00)
-  
+  After providing the above command press "ctrl+x" to release and check for that your testbench is in same format provided below:-
 
-4. Run the Functional Simulation
-
-Ensure your testbench is configured to dump waveforms into a _.vcd file._ Here's a basic example of how your testbench might be configured:
-
-module testbench;
-  
-_Signals and instantiation of the design_
-
-EXAMPLE:-
+  EXAMPLE:-
   
   initial begin
     
@@ -701,9 +696,19 @@ EXAMPLE:-
 
 endmodule
 
+  ![nanoedit](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/6ca510af-3aa1-49e0-9be7-3a2d0d5c0e00)
+  
+
+Ensure your testbench is configured to dump waveforms into a _.vcd file._ Here's a basic example of how your testbench might be configured:
+
+4. Run the Functional Simulation
+  
+_Signals and instantiation of the design_
+
 Compile and Simulate:
 
         $ iverilog -o rv32i_simulation iiitb_rv32i.v iiitb_rv32i_tb.v
+        
         $ vvp rv32i_simulation
 
 
@@ -714,15 +719,51 @@ View the Waveform:
         $ gtkwave simulation.vcd
 
 
-![gtkwave](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/01de2441-a515-4614-8e33-61125f4b46d5)
+* After giving the above command  gtkwave window will open .
+  
+* Then,click the "+" icon near iiitb_rv32_tb  so that rv32 will pop out.
+  
+* Nextly, at the bottom choose the  command from signals below for displaying waveform. once after you chose a command do not forget to give append at the bottom left corner of you screen.
+  
+* And now, the waves will be vsible on your blck screen as shown in the picture below.
 
-![open gtkwave](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/7be5f084-2489-4433-ae0e-37ac54257aac)
 
-![gtkwave input and output](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/d8acfaeb-7bb9-453c-8f18-032d9bcdfcbf)
+ ## OUTPUT:-
 
-![gtk](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/f067f367-77bb-488f-9554-77b30b3a4f7c)
+ #### ADD:-
 
+ ![add](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/0b436ed7-3766-4d7c-9362-5eb30a715c7d)
+
+ #### ADDI:-
  
+![addi](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/030d07b7-1e3b-46dd-be49-b25e0378ec47)
+
+
+#### SUB:-
+
+![sub](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/8fd47b54-3aa9-483b-802e-c2c53d38b01a)
+
+#### AND:-
+
+![and](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/5e92113f-d3f0-482b-990f-9839e42c226e)
+
+#### OR:-
+
+![or](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/3187f744-616a-4ab2-844d-ad05aa5e402d)
+
+#### XOR:-
+
+![xor](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/944d1ece-637b-492f-bc60-af839f1b4b7d)
+
+#### SLT:-
+
+![slt](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/c219a2b4-4fad-457f-b27b-fa20f45a534b)
+
+#### BEQ:-
+
+![beq](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/55be53ff-05e1-42c2-8d9b-1b26d6122303)
+
+*************************************************************************************************************************************************************************************************************************************
  
  
 
