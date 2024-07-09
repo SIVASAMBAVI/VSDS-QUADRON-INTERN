@@ -766,7 +766,115 @@ View the Waveform:
 ![beq](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/55be53ff-05e1-42c2-8d9b-1b26d6122303)
 
 *************************************************************************************************************************************************************************************************************************************
+## TASK 6:-
 
+Here's the updated documentation for "Clock Cycle Divider: Crafting a Digital Clock Divider Circuit" using a RISC-V processor without an FPGA board or external clock:
+
+### Project Name
+
+_Clock Cycle Divider: Crafting a Digital Clock Divider Circuit Using RISC-V Processor._
+
+### Overview
+This project involves designing a digital clock divider circuit using a RISC-V processor, without relying on an FPGA board or external clock. Instead, the RISC-V processor generates the clock signal internally and divides it through software. This approach allows flexibility in creating different clock frequencies for various subsystems by programming the division factor.
+
+### Components Required
+- RISC-V Processor Development Board: To generate and divide the clock signal.
+- Internal Clock Generator: Built-in clock of the RISC-V processor.
+- General Purpose Input/Output (GPIO) Pins**: Used for interfacing the divided clock signal.
+- Power Supply: For the RISC-V development board.
+- Jumper Wires: For connections.
+- Breadboard: Optional, for prototyping connections.
+- Oscilloscope/Logic Analyzer: For testing and verification.
+
+### Circuit Connection
+
+1. RISC-V Processor Development Board:
+    - Use the internal clock of the RISC-V processor to generate the clock signal.
+    - Configure GPIO pins for the output of the divided clock signal.
+2. Output:
+    - The divided clock signal is output through a GPIO pin.
+    - Connect the output pin to an oscilloscope or logic analyzer for verification.
+
+#### Implementation Steps:
+
+1. RISC-V Software: Develop the software to generate the initial clock signal and perform clock division based on a user-defined factor.
+2. Clock Handling: Use a software timer or a loop to generate the initial clock signal and implement the division logic.
+3. Signal Output: Output the divided clock signal through a GPIO pin, toggling the state based on the divided clock period.
+4. Testing: Test the divided clock output using an oscilloscope or logic analyzer to verify the frequency and stability.
+
+
+#### Pinout Diagram
+
+
+
+### Table for Pin Connection
+
+| Component              | Pin Name/Number | Connection Description                              |
+|------------------------|------------------|-----------------------------------------------------|
+| RISC-V Processor       | GPIO Clock Input | Internally generated clock signal                   |
+| RISC-V Processor       | GPIO Output Pin  | Outputs the divided clock signal                    |
+| Power Supply           | VCC, GND         | Powers the RISC-V development board                 |
+
+### Example Pin Connections:
+
+- RISC-V Internal Clock → Handled by RISC-V Software
+- **RISC-V GPIO Output Pin → Test Point/Output Connector
+
+### Software Example
+
+Below is a basic example of how you might implement the clock divider in C for a RISC-V processor:
+
+```c
+#include <stdint.h>
+#include <gpio.h>
+#include <timer.h>
+
+// GPIO configuration for the RISC-V platform
+#define CLOCK_OUTPUT_PIN 1 // GPIO pin for clock output
+
+// Division factor
+volatile uint32_t div_factor = 4; // Set to divide by 4 for example
+
+void delay(uint32_t cycles) {
+    for (volatile uint32_t i = 0; i < cycles; i++);
+}
+
+void generate_clock(uint32_t frequency) {
+    uint32_t period = 500000 / frequency; // Calculate period for desired frequency
+
+    while (1) {
+        gpio_write(CLOCK_OUTPUT_PIN, 1); // Set output high
+        delay(period / div_factor);      // Delay for half period
+        gpio_write(CLOCK_OUTPUT_PIN, 0); // Set output low
+        delay(period / div_factor);      // Delay for half period
+    }
+}
+
+int main() {
+    gpio_config(CLOCK_OUTPUT_PIN, GPIO_OUTPUT);
+
+    // Set desired frequency
+    uint32_t frequency = 1; // Example: 1 Hz initial clock
+
+    generate_clock(frequency);
+    return 0;
+}
+```
+
+### Detailed Steps:
+
+1. Configure GPIO: Initialize GPIO pins for clock output.
+2. Generate Initial Clock: Implement a function to generate the initial clock signal using a timer or loop.
+3. Implement Division Logic: Divide the clock by toggling the GPIO output based on the division factor.
+4. Control Logic: Implement control logic to adjust the division factor dynamically via control pins or software commands if needed.
+
+### Testing and Verification:
+
+1. Run the RISC-V Program: Upload and execute the clock divider program on the RISC-V development board.
+2. Measure Output: Use an oscilloscope to measure the frequency of the output clock signal and verify that it matches the expected divided frequency.
+
+
+#### ✒️NOTE:- The above provides a comprehensive overview of the clock cycle divider project using a RISC-V processor without external clock sources or FPGA boards. Ensure to adjust the software logic based on the specific RISC-V platform and your application's requirements.
  
  
 
