@@ -803,8 +803,9 @@ This project involves designing a digital clock divider circuit using a RISC-V p
 4. Testing: Test the divided clock output using an oscilloscope or logic analyzer to verify the frequency and stability.
 
 
-#### Pinout Diagram
+#### BLOCK Diagram
 
+![circuit](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/58223882-2113-4ef2-a640-221e13e27a14)
 
 
 ### Table for Pin Connection
