@@ -810,18 +810,31 @@ This project involves designing a digital clock divider circuit using a RISC-V p
 ![circuit](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/58223882-2113-4ef2-a640-221e13e27a14)
 
 
-#### 
+####  CIRCUIT DIAGRAM
 
 ![WhatsApp Image 2024-07-21 at 10 00 07_1e2ed80b](https://github.com/user-attachments/assets/65ba4201-fe00-439f-8e35-516818d86860)
 
 
 ### Table for Pin Connection
 
-| Component              | Pin Name/Number | Connection Description                              |
+---------------------------------------------------------------------------------------------------
+| Component              | Pin Name/Number  | Connection Description                               |
 |------------------------|------------------|-----------------------------------------------------|
 | RISC-V Processor       | GPIO Clock Input | Internally generated clock signal                   |
 | RISC-V Processor       | GPIO Output Pin  | Outputs the divided clock signal                    |
 | Power Supply           | VCC, GND         | Powers the RISC-V development board                 |
+---------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------
+| SNO |  RISCV                       | i2c with LCD DISPLAY |
+|-----|------------------------------|----------------------|
+|  1. | GND                          |  GND                 |
+|  2. | 5 V                          |  VCC                 |
+|  3. | PC1                          |  SDA                 |
+|  4. | PC2                          |  SCL                 |
+|  5. | C-TYPE CABLE WITH COM3 PORT  |                      |
+-------------------------------------------------------------
+
 
 ### Example Pin Connections:
 
