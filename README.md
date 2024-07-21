@@ -1059,6 +1059,9 @@ void HardFault_Handler(void) {
 
 _Here is the demo of clock divider that displays the input and output on the lcd display interfaced with i2c module._
 
+ https://drive.google.com/file/d/144wyCaPR7g2mpbsevwhIb9EWjha7ES6M/view?usp=sharing
+
+
 
 
 
