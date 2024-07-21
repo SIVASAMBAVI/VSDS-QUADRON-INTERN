@@ -6,6 +6,8 @@
 *  TASK 3 - To compile the C code under RISCV and equalize the output of GCC and RISCV (O1==O2).
 *  TASK 4 - Identify various RISC-V instruction type (R, I, S, B, U, J) and exact 32-bit instruction code in the instruction type format for below RISC-V instructions.
 *  TASK 5 - Use this RISC-V Core Verilog netlist and testbench for functional simulation experiment. Upload waveform snapshots for the commands on your GitHub. Reference GitHub repo is here.
+*  TASK 6 - Documentation for "Clock Cycle Divider: Crafting a Digital Clock Divider Circuit" using a RISC-V processor without external clock.
+*  TASK 7 - DEMONSTRATION OF CLOCK DIVIDER.
   
 ****************************
 
@@ -768,7 +770,7 @@ View the Waveform:
 *************************************************************************************************************************************************************************************************************************************
 ## TASK 6:-
 
-Here's the updated documentation for "Clock Cycle Divider: Crafting a Digital Clock Divider Circuit" using a RISC-V processor without an FPGA board or external clock:
+Here's the updated documentation for "Clock Cycle Divider: Crafting a Digital Clock Divider Circuit" using a RISC-V processor without external clock:
 
 ### Project Name
 
@@ -808,6 +810,11 @@ This project involves designing a digital clock divider circuit using a RISC-V p
 ![circuit](https://github.com/SIVASAMBAVI/VSDS-QUADRON-INTERN/assets/150532409/58223882-2113-4ef2-a640-221e13e27a14)
 
 
+#### 
+
+![WhatsApp Image 2024-07-21 at 10 00 07_1e2ed80b](https://github.com/user-attachments/assets/65ba4201-fe00-439f-8e35-516818d86860)
+
+
 ### Table for Pin Connection
 
 | Component              | Pin Name/Number | Connection Description                              |
@@ -825,42 +832,211 @@ This project involves designing a digital clock divider circuit using a RISC-V p
 
 Below is a basic example of how you might implement the clock divider in C for a RISC-V processor:
 
-```c
-#include <stdint.h>
-#include <gpio.h>
-#include <timer.h>
+   // VSDS QUADRONMINI CLOCKDIVIDER // 
+                                                                                                    
+#include <ch32v00x.h>
+#include <debug.h>
 
-// GPIO configuration for the RISC-V platform
-#define CLOCK_OUTPUT_PIN 1 // GPIO pin for clock output
+// I2C address of the LCD
+#define LCD_I2C_ADDRESS 0x27
 
-// Division factor
-volatile uint32_t div_factor = 4; // Set to divide by 4 for example
+// LCD commands
+#define LCD_CLEAR_DISPLAY 0x01
+#define LCD_RETURN_HOME 0x02
+#define LCD_ENTRY_MODE_SET 0x04
+#define LCD_DISPLAY_CONTROL 0x08
+#define LCD_CURSOR_SHIFT 0x10
+#define LCD_FUNCTION_SET 0x20
+#define LCD_SET_CGRAM_ADDR 0x40
+#define LCD_SET_DDRAM_ADDR 0x80
 
-void delay(uint32_t cycles) {
-    for (volatile uint32_t i = 0; i < cycles; i++);
+// Flags for display entry mode
+#define LCD_ENTRY_RIGHT 0x00
+#define LCD_ENTRY_LEFT 0x02
+#define LCD_ENTRY_SHIFT_INCREMENT 0x01
+#define LCD_ENTRY_SHIFT_DECREMENT 0x00
+
+// Flags for display on/off control
+#define LCD_DISPLAY_ON 0x04
+#define LCD_DISPLAY_OFF 0x00
+#define LCD_CURSOR_ON 0x02
+#define LCD_CURSOR_OFF 0x00
+#define LCD_BLINK_ON 0x01
+#define LCD_BLINK_OFF 0x00
+
+#define BLINKY_GPIO_PORT GPIOD
+#define BLINKY_GPIO_PIN GPIO_Pin_6
+#define BLINKY_CLOCK_ENABLE RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE)
+
+// Define the I2C peripheral and GPIO for SDA/SCL
+#define I2C_PERIPHERAL I2C1
+#define I2C_GPIO_PORT GPIOC
+#define I2C_SDA_PIN GPIO_Pin_0
+#define I2C_SCL_PIN GPIO_Pin_1
+#define I2C_CLOCK_ENABLE RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC | RCC_APB1Periph_I2C1, ENABLE)
+
+void NMI_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+void HardFault_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+
+static void i2c_write(uint8_t data) {
+    // Wait until the I2C bus is ready
+    while (I2C_GetFlagStatus(I2C_PERIPHERAL, I2C_FLAG_BUSY));
+
+    // Generate a START condition
+    I2C_GenerateSTART(I2C_PERIPHERAL, ENABLE);
+
+    // Wait for EV5 (START condition generated)
+    while (!I2C_CheckEvent(I2C_PERIPHERAL, I2C_EVENT_MASTER_MODE_SELECT));
+
+    // Send the I2C address and write direction
+    I2C_Send7bitAddress(I2C_PERIPHERAL, LCD_I2C_ADDRESS << 1, I2C_Direction_Transmitter);
+
+    // Wait for EV6 (address acknowledged)
+    while (!I2C_CheckEvent(I2C_PERIPHERAL, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+
+    // Send the data byte
+    I2C_SendData(I2C_PERIPHERAL, data);
+
+    // Wait for EV8_2 (data byte transmitted and acknowledged)
+    while (!I2C_CheckEvent(I2C_PERIPHERAL, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+
+    // Generate a STOP condition
+    I2C_GenerateSTOP(I2C_PERIPHERAL, ENABLE);
 }
 
-void generate_clock(uint32_t frequency) {
-    uint32_t period = 500000 / frequency; // Calculate period for desired frequency
+void lcd_i2c_init(void) {
+    // Initialize GPIO for I2C
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
+    I2C_CLOCK_ENABLE;
+    
+    GPIO_InitStructure.GPIO_Pin = I2C_SCL_PIN | I2C_SDA_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(I2C_GPIO_PORT, &GPIO_InitStructure);
 
-    while (1) {
-        gpio_write(CLOCK_OUTPUT_PIN, 1); // Set output high
-        delay(period / div_factor);      // Delay for half period
-        gpio_write(CLOCK_OUTPUT_PIN, 0); // Set output low
-        delay(period / div_factor);      // Delay for half period
+    // Initialize I2C peripheral
+    I2C_InitTypeDef I2C_InitStructure = {0};
+    I2C_InitStructure.I2C_ClockSpeed = 100000; // 100kHz
+    I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;
+    I2C_InitStructure.I2C_DutyCycle = I2C_DutyCycle_2;
+    I2C_InitStructure.I2C_OwnAddress1 = 0x00;
+    I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;
+    I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
+    I2C_Init(I2C_PERIPHERAL, &I2C_InitStructure);
+    
+    I2C_Cmd(I2C_PERIPHERAL, ENABLE);
+
+    // Initialize the LCD
+    i2c_write(LCD_FUNCTION_SET | 0x28); // Function set: 4-bit mode, 2 lines, 5x8 dots
+    i2c_write(LCD_DISPLAY_CONTROL | LCD_DISPLAY_ON); // Display control: display on, cursor off, no blink
+    i2c_write(LCD_CLEAR_DISPLAY); // Clear display
+    i2c_write(LCD_ENTRY_MODE_SET | LCD_ENTRY_LEFT); // Entry mode set: increment automatically, no display shift
+}
+
+void lcd_i2c_clear(void) {
+    i2c_write(LCD_CLEAR_DISPLAY);
+}
+
+void lcd_i2c_write_string(char* str) {
+    while (*str) {
+        i2c_write((uint8_t)*str++);
     }
 }
 
-int main() {
-    gpio_config(CLOCK_OUTPUT_PIN, GPIO_OUTPUT);
-
-    // Set desired frequency
-    uint32_t frequency = 1; // Example: 1 Hz initial clock
-
-    generate_clock(frequency);
-    return 0;
+void lcd_i2c_send_command(uint8_t cmd) {
+    i2c_write((cmd & 0xF0) | 0x00); // Command mode
+    i2c_write(((cmd << 4) & 0xF0) | 0x00);
 }
-```
+
+void lcd_i2c_send_data(uint8_t data) {
+    i2c_write((data & 0xF0) | 0x01); // Data mode
+    i2c_write(((data << 4) & 0xF0) | 0x01);
+}
+
+void Custom_Delay_Init(void) {
+    // Initialize delay function (e.g., SysTick)
+}
+
+void Custom_Delay_Ms(uint32_t n) {
+    // Implement a millisecond delay
+    for (volatile uint32_t i = 0; i < n * 1000; i++) {
+        __asm__ __volatile__("nop");
+    }
+}
+
+void clock_divider(uint32_t clock_source, uint32_t divider) {
+    uint32_t counter = 10;
+    while (counter <= 20) {
+        // Display the counter value
+        lcd_i2c_clear();
+        lcd_i2c_write_string("Counter: ");
+        lcd_i2c_send_data(counter);
+        Custom_Delay_Ms(3127);
+
+        // Display the toggle of clock value
+        lcd_i2c_clear();
+        lcd_i2c_write_string("Clock: ");
+        lcd_i2c_write_string((GPIO_ReadOutputDataBit(BLINKY_GPIO_PORT, BLINKY_GPIO_PIN) == Bit_SET) ? "HIGH" : "LOW");
+        Custom_Delay_Ms(3283);
+
+        // Display the input frequency
+        lcd_i2c_clear();
+        lcd_i2c_write_string("Input Freq: ");
+        lcd_i2c_send_data(clock_source);
+        Custom_Delay_Ms(3419);
+
+        // Display the output frequency
+        lcd_i2c_clear();
+        lcd_i2c_write_string("Output Freq: ");
+        lcd_i2c_send_data(clock_source / divider);
+        Custom_Delay_Ms(3561);
+
+        if (counter >= divider) {
+            counter = 0;
+            GPIO_WriteBit(BLINKY_GPIO_PORT, BLINKY_GPIO_PIN, (BitAction)(1 - GPIO_ReadOutputDataBit(BLINKY_GPIO_PORT, BLINKY_GPIO_PIN)));
+        }
+        counter++;
+    }
+
+    // Display the end message
+    lcd_i2c_clear();
+    lcd_i2c_write_string("End of ");
+    lcd_i2c_write_string("program");
+    Custom_Delay_Ms(1000);
+}
+
+int main(void) {
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+    SystemCoreClockUpdate();
+    Custom_Delay_Init();
+
+    // Initialize GPIO for LED
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
+    BLINKY_CLOCK_ENABLE;
+    GPIO_InitStructure.GPIO_Pin = BLINKY_GPIO_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(BLINKY_GPIO_PORT, &GPIO_InitStructure);
+
+    // Initialize I2C LCD
+    lcd_i2c_init();
+
+    // Set the clock source and divider values
+    uint32_t clock_source = 200;
+    uint32_t divider = 10;
+
+    // Call the clock divider function
+    clock_divider(clock_source, divider);
+
+    while (1) {
+        // Infinite loop
+    }
+}
+
+void NMI_Handler(void) {}
+void HardFault_Handler(void) {
+    while (1) {}
+}
 
 ### Detailed Steps:
 
@@ -875,7 +1051,17 @@ int main() {
 2. Measure Output: Use an oscilloscope to measure the frequency of the output clock signal and verify that it matches the expected divided frequency.
 
 
-#### ✒️NOTE:- The above provides a comprehensive overview of the clock cycle divider project using a RISC-V processor without external clock sources or FPGA boards. Ensure to adjust the software logic based on the specific RISC-V platform and your application's requirements.
+#### ✒️NOTE:- The above provides a comprehensive overview of the clock cycle divider project using a RISC-V processor without external clock sources . Ensure to adjust the software logic based on the specific RISC-V platform and your application's requirements.
+
+**************************************************************************************************************************************************************************************************************************************************************************
+
+### TASK 7:  DEMONSTRATION OF CLOCK DIVIDER.
+
+_Here is the demo of clock divider that displays the input and output on the lcd display interfaced with i2c module._
+
+
+
+
  
  
 
